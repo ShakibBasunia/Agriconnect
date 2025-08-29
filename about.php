@@ -168,7 +168,7 @@
   <div class="bg-anim" aria-hidden="true"></div>
 
   <header class="site-header" role="banner">
-    <a href="home.html" class="logo" aria-label="Agriconnect Home">
+    <a href="home.php" class="logo" aria-label="Agriconnect Home">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" style="color:var(--accent)">
         <path d="M21 11.5c-4.5 1.5-7.5 5.5-10 9-2.3-3.2-5.7-5.2-9-6C3.9 4.9 12 2 21 11.5z"></path>
       </svg> 

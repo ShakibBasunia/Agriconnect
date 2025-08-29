@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AgriConnect — Agriculture Portal</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg-1: #07130b;
+      --bg-2: #0b2a12;
+      --card: #07120f;
+      --accent: #80ff80;
+      --accent-dark: #2e7d32;
+      --muted: #cfead1;
+      --glass: rgba(255, 255, 255, 0.03);
+      --glass-2: rgba(255, 255, 255, 0.02);
+      --card-radius: 16px;
+      --gap: 28px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
+
+    html,
+    body {
+      height: 100%
+    }
+
+    body {
+      font-family: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color: var(--muted);
+      background: radial-gradient(1000px 600px at 10% 10%, rgba(128, 255, 128, 0.05), transparent 10%),
+        linear-gradient(180deg, var(--bg-1), var(--bg-2) 60%);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      line-height: 1.4;
+      padding-bottom: 60px;
+    }
+
+    .bg-anim {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: 0.2;
+      background-image: url("IMG-20250816-WA0016.jpg");
+      background-size: cover;
+      background-position: center;
+      filter: grayscale(80%) contrast(80%) blur(1px);
+      animation: bgShift 20s linear infinite;
+    }
+
+    @keyframes bgShift {
+      0% {
+        transform: translateY(0)
+      }
+
+      50% {
+        transform: translateY(-10px)
+      }
+
+      100% {
+        transform: translateY(0)
+      }
+    }
+
+    header.site-header {
+      position: relative;
+      z-index: 10;
+      padding: 18px 32px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--muted);
+      font-weight: 700;
+      font-size: 1.15rem;
+    }
+
+    .logo svg {
+      width: 42px;
+      height: 42px;
+      display: block;
+      flex-shrink: 0;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    nav a {
+      color: var(--muted);
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 10px;
+      font-weight: 600;
+    }
+
+    nav a:hover,
+    nav a:focus {
+      background: var(--glass);
+      color: var(--accent);
+      outline: none;
+      transform: translateY(-2px);
+      transition: transform 0.18s ease;
+    }
+
+    .cta {
+      background: linear-gradient(90deg, var(--accent-dark), #1E90FF);
+      color: #06110a;
+      padding: 8px 14px;
+      border-radius: 12px;
+      font-weight: 700;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.45);
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .cta:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero {
+      text-align: center;
+      padding: 64px 20px 36px;
+      z-index: 8;
+      position: relative;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.8rem, 4.5vw, 3.4rem);
+      color: var(--accent);
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      text-shadow: 0 6px 26px rgba(0, 0, 0, 0.6);
+    }
+
+    .hero p {
+      font-size: 1.05rem;
+      color: #d9efd8;
+      margin-bottom: 20px;
+      max-width: 880px;
+      margin-left: auto;
+      margin-right: auto;
+      opacity: 0.95
+    }
+
+    .hero .hero-actions {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+
+    button.btn {
+      border: 0;
+      cursor: pointer;
+      padding: 10px 16px;
+      border-radius: 12px;
+      font-weight: 700;
+      background: transparent;
+      color: var(--muted);
+      transition: all 0.18s ease;
+    }
+
+    button.btn.primary {
+      background: linear-gradient(90deg, var(--accent-dark), #1E90FF);
+      color: #06110a;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.5);
+    }
+
+    button.btn.ghost {
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      color: var(--muted)
+    }
+
+    .cards {
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap);
+      max-width: 1100px;
+      margin: 34px auto;
+      padding: 10px 22px;
+      position: relative;
+      z-index: 8;
+    }
+
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--gap);
+      justify-content: center;
+    }
+
+    .card {
+      position: relative;
+      overflow: visible;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+      border-radius: var(--card-radius);
+      padding: 22px;
+      min-height: 260px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: left;
+      transition: transform 0.34s cubic-bezier(.2, .9, .25, 1), box-shadow 0.34s;
+      box-shadow: 0 8px 26px rgba(2, 6, 2, 0.6);
+      cursor: pointer;
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      flex: 1 1 240px;
+    }
+
+    .card:focus {
+      outline: 3px solid rgba(128, 255, 128, 0.12)
+    }
+
+    .card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 24px 44px rgba(2, 6, 2, 0.65);
+    }
+
+    .outline {
+      position: absolute;
+      inset: 16px;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    .card .content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      gap: 18px;
+      align-items: center;
+      width: 100%
+    }
+
+    .card .icon {
+      width: 110px;
+      height: 110px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0.03), rgba(255, 255, 255, 0.01));
+      flex-shrink: 0;
+      overflow: hidden;
+      box-shadow: inset 0 -6px 18px rgba(0, 0, 0, 0.35);
+    }
+
+    .card .icon img {
+      width: 72px;
+      height: 72px;
+      display: block;
+      filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.45));
+    }
+
+    .card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 6px;
+      color: var(--muted)
+    }
+
+    .card p {
+      color: #cfead1;
+      opacity: 0.95;
+      font-size: 0.96rem
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #bfe6b8;
+      opacity: 0.9;
+      font-size: 0.95rem
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg-anim" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a href="#" class="logo" aria-label="AgriConnect Home">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.1" stroke-linecap="round"
+        stroke-linejoin="round" style="color:var(--accent)">
+        <path d="M21 11.5c-4.5 1.5-7.5 5.5-10 9-2.3-3.2-5.7-5.2-9-6C3.9 4.9 12 2 21 11.5z"></path>
+      </svg>
+      <span>AgriConnect</span>
+    </a>
+
+    <nav aria-label="Main navigation">
+      <a href="agriofficerloginsignup.html">Agri Officer</a>
+      <a href="farmerloginsignup.html">Farmer</a>
+      <a href="WholesellerLoginsignin.html">Wholesaler</a>
+      <a href="about.php">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" role="banner" aria-label="Welcome">
+      <h1>Welcome to AgriConnect</h1>
+      <p>Connecting Farmers, Officers, Wholesalers, and Agri Solutions — build smarter supply chains and get the right help at the right time.</p>
+      <div class="hero-actions">
+        <a href="agriofficerloginsignup.html"><button class="btn primary">Officer Login</button></a>
+        <a href="farmerloginsignup.html"><button class="btn ghost">Farmer Login</button></a>
+      </div>
+    </section>
+
+    <section class="cards" aria-label="Portal sections">
+      <div class="row">
+        <!-- Agri Officer Card -->
+        <a href="agriofficerloginsignup.html" class="card reveal" aria-label="Agri Officer login panel">
+          <div class="content">
+            <div class="icon">
+              <img src="https://static.vecteezy.com/system/resources/thumbnails/002/181/292/small/green-technology-for-agriculture-concept-free-vector.jpg" alt="Officer icon">
+            </div>
+            <div>
+              <h3>Agri Officer</h3>
+              <p>Handle requests, guide, and monitor</p>
+            </div>
+          </div>
+        </a>
+
+        <!-- Farmer Card -->
+        <a href="farmerloginsignup.html" class="card reveal" aria-label="Farmer login panel">
+          <div class="content">
+            <div class="icon">
+              <img src="https://png.pngtree.com/png-vector/20240314/ourmid/pngtree-happy-farmer-working-in-paddy-field-png-image_11949131.png" alt="Farmer icon">
+            </div>
+            <div>
+              <h3>Farmer</h3>
+              <p>Get tips, request help, track crops</p>
+            </div>
+          </div>
+        </a>
+      </div>
+
+      <div class="row">
+        <!-- Wholesaler Card -->
+        <a href="WholesellerLoginsignin.html" class="card reveal" aria-label="Wholesaler login panel">
+          <div class="content">
+            <div class="icon">
+              <img src="https://img.icons8.com/fluency/96/000000/warehouse.png" alt="Wholesaler icon">
+            </div>
+          <div style="display: flex; justify-content: center; align-items: center; height: 10vh; text-align: center;">
+  <div>
+    <h3>Wholesaler</h3>
+    <p>Manage stock, connect, optimize distribution</p>
+  </div>
+</div>
+
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section id="about" style="max-width:1000px;margin:0 auto;padding:28px 22px;text-align:center">
+      <h2 style="color:var(--accent); margin-bottom:12px;">About AgriConnect</h2>
+      <p style="color:#dff6df; max-width:820px; margin:0 auto; line-height:1.6">
+        AgriConnect bridges the gap between farmers, officers and wholesalers with tools for communication,
+        field advisory and market connections. Built for low-bandwidth and mobile-first use — simple, fast and secure.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    &copy; <span id="year"></span> AgriConnect — Built for sustainable agriculture.
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+
+</html>

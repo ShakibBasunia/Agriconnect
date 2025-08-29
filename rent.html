@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AgriConnect | Equipment Rental</title>
+<style>
+:root {
+    --green: #00cc00;
+    --dark: #0d0d0d;
+    --deep: #1a1a1a;
+    --light: #d4f5c3;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+body {
+  position: relative;
+    color: var(--light);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background: url(https://tse3.mm.bing.net/th/id/OIP.4xCRK6ssIdG9BUiB711GsAHaEo?rs=1&pid=ImgDetMain&o=7&rm=3) no-repeat center center;
+    background-size: cover;
+}
+
+/* Navbar */
+nav {
+    background: #004d00;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+}
+nav .logo {
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--light);
+    letter-spacing: 1px;
+}
+nav a {
+    color: var(--light);
+    text-decoration: none;
+    margin-left: 25px;
+    font-weight: 500;
+    transition: color .3s ease;
+}
+nav a:hover {
+    color: var(--green);
+}
+
+/* Hero section */
+.hero {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+    text-align: center;
+}
+h1 {
+    font-size: 32px;
+    color: var(--green);
+    margin-bottom: 15px;
+    text-shadow: 0 0 8px rgba(0, 204, 0, 0.5);
+}
+p.tag {
+    margin-bottom: 40px;
+    color: #a0f2a0;
+    font-size: 16px;
+}
+
+/* Cards */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 30px;
+    width: 100%;
+    max-width: 900px;
+}
+.card {
+    background: var(--deep);
+    border-radius: 12px;
+    padding: 40px 20px;
+    cursor: pointer;
+    box-shadow: 0 0 10px #004d00;
+    transition: transform .35s ease, box-shadow .35s ease;
+    border: 1px solid rgba(0, 204, 0, 0.1);
+}
+.card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 0 18px var(--green);
+    border-color: var(--green);
+}
+.card h3 {
+    color: var(--green);
+    margin-bottom: 12px;
+}
+.card p {
+    font-size: 14px;
+    line-height: 1.5;
+    color: #c4ffc4;
+}
+
+/* Footer */
+footer {
+    padding: 15px 0;
+    text-align: center;
+    font-size: 12px;
+    color: #888;
+    background: #0f0f0f;
+    border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+@media(max-width:500px) {
+    h1 { font-size: 26px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">AgriConnect</div>
+  <div>
+    <a href="index.html">Home</a>
+    <a href="about.php">About Us</a>
+  </div>
+</nav>
+
+<!-- HERO / CARDS -->
+<section class="hero">
+  <h1>Equipment Rental Marketplace</h1>
+  <p class="tag">Easily rent out your machinery — or hire what you need in a click.</p>
+
+  <div class="cards">
+
+    <a href="give_rent_equipment.php" style="text-decoration:none">
+      <div class="card">
+        <h3>Give Equipment on Rent</h3>
+        <p>List tractors, power tillers, sprayers and more.<br>Earn while helping fellow farmers.</p>
+      </div>
+    </a>
+
+    <a href="take_rent_equipment.php" style="text-decoration:none">
+      <div class="card">
+        <h3>Take Equipment on Rent</h3>
+        <p>Browse nearby equipment &amp; services.<br>Book instantly — pay per 24 hours.</p>
+      </div>
+    </a>
+
+  </div>
+</section>
+
+<footer>
+  © 2025 AgriConnect — Growing together
+</footer>
+
+</body>
+</html>

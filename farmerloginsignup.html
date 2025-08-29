@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Farmer Portal - AgriConnect</title>
+  <style>
+    :root{
+      --bg-1: #07130b;
+      --bg-2: #0b2a12;
+      --card: #07120f;
+      --accent: #80ff80;
+      --accent-dark: #2e7d32;
+      --muted: #cfead1;
+      --glass: rgba(255,255,255,0.03);
+      --glass-2: rgba(255,255,255,0.02);
+      --card-radius: 16px;
+      --gap: 28px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%}
+    body{
+      font-family: 'Poppins', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color:var(--muted);
+     background-color: #00000080;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.4;
+      padding-bottom:60px;
+    }
+
+    /* Navbar */
+    header.site-header{
+      position:relative; z-index:10;
+      padding:18px 32px;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px;
+      background: linear-gradient(90deg, var(--bg-1), var(--bg-2));
+      box-shadow: 0 4px 12px rgba(0,0,0,0.7);
+    }
+
+    /* logo */
+    .logo {
+      display:flex; align-items:center; gap:12px; text-decoration:none;
+      color:var(--muted);
+      font-weight:700; font-size:1.15rem;
+      user-select:none;
+    }
+
+    nav {
+      display:flex; align-items:center; gap:18px;
+    }
+    nav a{
+      color:var(--muted);
+      text-decoration:none; padding:8px 12px; border-radius:10px; font-weight:600;
+      position: relative;
+      transition: all 0.3s ease;
+    }
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -5px;
+      width: 0%;
+      height: 3px;
+      background: var(--accent);
+      transition: width 0.3s ease;
+      border-radius: 3px;
+    }
+    nav a:hover,
+    nav a:focus {
+      background:var(--glass);
+      color:var(--accent);
+      outline: none;
+      transform:translateY(-2px);
+    }
+    nav a:hover::after,
+    nav a:focus::after {
+      width: 100%;
+    }
+
+    .container {
+  width: 90%;
+  height: 30%;
+  margin: 5vh auto;
+  padding: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: var(--gap);
+}
+
+
+    .box {
+      background-color: var(--card);
+      padding: 40px 30px;
+      border-radius: var(--card-radius);
+      width: 320px;
+      text-align: center;
+      box-shadow: 0 0 15px var(--glass);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      user-select:none;
+    }
+
+    .box:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 0 30px var(--accent);
+    }
+
+    .box h2 {
+      color: var(--accent);
+      margin-bottom: 28px;
+      font-weight: 700;
+      font-size: 1.8rem;
+      user-select:text;
+    }
+
+    .box button {
+      background: linear-gradient(90deg, var(--accent-dark), #1E90FF);
+      color: #06110a;
+      border: none;
+      border-radius: 6px;
+      padding: 14px 30px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+      cursor: pointer;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+      user-select:none;
+    }
+
+    .box button:hover {
+      background-color: #007acc;
+      transform: scale(1.05);
+      box-shadow: 0 9px 20px rgba(0,0,0,0.5);
+    }
+    .background-video{
+      position: fixed;
+      top:0;
+      left:0;
+      height:100%;
+      width:100%;
+      object-fit: cover;
+      z-index:-1;
+      opacity:0.5;
+    }
+    .background-overlay{
+      position: fixed;
+      top:0;
+      left:0;
+      background: black;
+      height: 100%;
+      width:100%;
+      z-index: -1;
+      opacity:0.2;
+    }
+
+
+    /* Responsive tweaks */
+    @media (max-width:640px) {
+      header.site-header {
+        padding: 12px 18px;
+      }
+      .container {
+        margin: 60px 12px;
+        gap: 20px;
+      }
+      .box {
+        width: 100%;
+        max-width: 320px;
+        padding: 30px 20px;
+      }
+      .box h2 {
+        font-size: 1.5rem;
+      }
+      .box button {
+        font-size: 1rem;
+        padding: 12px 24px;
+      }
+      nav {
+        gap: 12px;
+      }
+      nav a {
+        padding: 6px 10px;
+        font-size: 14px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <video autoplay muted loop class="background-video">
+    <source src="loginsignupbg.mp4">
+  </video>
+  <div class="background-overlay"></div>
+
+  <header class="site-header" role="banner">
+    <a href="#" class="logo" aria-label="AgriConnect Home">AgriConnect</a>
+    <nav role="navigation" aria-label="Primary Navigation">
+      <a href="home.php">Home</a>
+      <a href="farmer_login.php">Farmer</a>
+      <a href="about.php">About Us</a>
+    </nav>
+  </header>
+
+  <main class="container" role="main">
+    <!-- Login Section -->
+    <section class="box" role="region" aria-labelledby="login-title" tabindex="0" onclick="window.location.href='farmer_login.php'">
+      <h2 id="login-title">Login as Farmer</h2>
+      <button type="button" aria-label="Go to Farmer Login page">Login</button>
+    </section>
+
+    <!-- Register Section -->
+    <section class="box" role="region" aria-labelledby="register-title" tabindex="0" onclick="window.location.href='farmer_registration.php'">
+      <h2 id="register-title">Register as Farmer</h2>
+      <button type="button" aria-label="Go to Farmer Registration page">Register</button>
+    </section>
+  </main>
+
+</body>
+</html>
